@@ -4,8 +4,8 @@ you must chose a target to attack and a target to defend from
 If the one chesen to be defended attacks you, then kill him.
 If the one attacked by you defends against you, you die.
 ***/
-var Volatile = require('../Volatile').Volatile;
-var Gamerino = require('../../Game');
+var Volatile = require('../../lib/Volatile').Volatile;
+var Gamerino = require('../../lib/Game');
 
 class GameInstance {
 
