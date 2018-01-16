@@ -1,0 +1,15 @@
+{
+  "name": "PlopBot",
+  "version": "1.0.0",
+  "description": "Plop's bot. It does things",
+  "main": "bot.js",
+  "author": "Habier",
+  "dependencies": {
+    "better-sqlite3": "^4.0.3",
+    "discord.js": "^11.2.1",
+    "glob": "^7.1.2",
+    "redwrap": "0.0.4",
+    "roll": "^1.2.0",
+    "winston": "^2.4.0"
+  }
+}
