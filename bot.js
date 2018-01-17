@@ -22,8 +22,8 @@ bot.on('message', (message) => {
 });
 
 bot.on('guildMemberAdd', member => {
-	// Send the message to a designated channel on a server:
-	let channel = member.guild.channels.find('name', 'member-log');
+	// Send the message to the channel specified in _configurer.js
+	let channel = member.guild.channels.find('name', defaultChannelName);
 	if (!channel)
 		return; //channel not found, better get out
 	channel.send(`MUHAHAHAHAHA ${member}, ahora tu alma nos pertenece.`);
