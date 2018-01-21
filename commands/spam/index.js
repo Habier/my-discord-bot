@@ -1,5 +1,4 @@
-var Database = require('better-sqlite3');
-let db = new Database('./private/discordBot.db');
+let Club = require('../../Services/ClubServices');
 
 
 ///String to explain the command
@@ -18,11 +17,11 @@ exports.exe = function(args, message) {
     return;
   }
 
-  let club_id = getClubId(db, args[1]);
+  let club_id = Club.getClubId(args[1]);
   if (!club_id) {
     msg = "¡Ese club no existe!"
-  } else if (isInClub(db, club_id, message.author.id)) {
-    let stmt = db.prepare("SELECT * FROM club_members WHERE club_id=?");
+  } else if (Club.isInClub(club_id, message.author.id)) {
+    let stmt = Club.prepare("SELECT * FROM club_members WHERE club_id=?");
     let rows = stmt.all(club_id);
     let phrase = args.slice(2).join(' ');
     for (let row of rows) {
@@ -34,36 +33,4 @@ exports.exe = function(args, message) {
   }
 
   message.channel.send(msg);
-}
-
-function isInClub(db, club_id, user_id) {
-  let already = false;
-  let stmt = db.prepare("SELECT * FROM club_members WHERE club_id=? AND user_id=?");
-  let rows = stmt.all(club_id, user_id);
-  if (rows.length > 0)
-    already = true;
-
-  return already;
-}
-
-function add2club(db, club_id, user_id) {
-
-
-  if (!isInClub(db, club_id, user_id)) {
-    stmt = db.prepare("INSERT INTO club_members (club_id, user_id) VALUES (?, ?)");
-    stmt.run(club_id, user_id);
-  }
-
-  return already;
-}
-
-function getClubId(db, name) {
-  let club_id = false;
-  let stmt = db.prepare("SELECT * FROM clubs WHERE name=?");
-  let rows = stmt.all(name);
-
-  if (rows.length > 0) {
-    club_id = rows[0].id;
-  }
-  return club_id;
 }
