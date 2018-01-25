@@ -6,6 +6,7 @@ var Commands = require('./commands');
 bot.on('ready', () => {
 	logger.info('Connected');
 	logger.info('Logged in as: ' + bot.user.username + ' - (' + bot.user.id + ')');
+	console.log(lang.use(lang.test));
 });
 
 bot.on('message', (message) => {
@@ -26,7 +27,7 @@ bot.on('guildMemberAdd', member => {
 	let channel = member.guild.channels.find('name', defaultChannelName);
 	if (!channel)
 		return; //channel not found, better get out
-	channel.send(`MUHAHAHAHAHA ${member}, ahora tu alma nos pertenece.`);
+	channel.send(lang.use(lang.join_welcome, member, commandCharacter + 'help'));
 });
 
 bot.login(auth.token);
