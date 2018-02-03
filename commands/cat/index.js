@@ -2,11 +2,12 @@ reddit = require('redwrap');
 let subs = [
   'Meow_Irl', 'Cats', 'CatReactionGifs',
   'CatSpotting', 'CatGifs', 'CatPics',
-  'CatReddit', 'KittenGifs', 'CatVideos',
+  'CatReddit', 'KittenGifs',
   'Kitten', 'Kittens', 'Kitties',
   'LookAtMyCat', 'Cat', 'Kitty',
   'CatPictures'
 ];
+//'CatVideos', seems to be private
 let subsCount = subs.length;
 
 
@@ -14,13 +15,13 @@ let subsCount = subs.length;
 exports.exe = function(args, message) {
 
   var sub = subs[Math.floor(Math.random() * subsCount)];
-  let msg = "";
+  let msg = "(╯°□°）╯︵ ┻━┻"; //default message showing my thoughts.
   reddit.r(sub).sort('new').limit(100, function(err, data, res) {
 
     if (err) {
-      msg("uy reddit ha petado");
+      message.channel.send("uy reddit ha petado");
       return;
-    } else {
+    } else if (data.data !== undefined) {
 
       var items = data.data.children;
       var item = items[Math.floor(Math.random() * items.length)];
