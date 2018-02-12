@@ -1,5 +1,5 @@
-/** Class representing a list of Commands for games. */
-class GameCommandList {
+/** Class representing a list of Commands. */
+class CommandList {
 
   /**
    * Create an Empty Command List.
@@ -19,17 +19,16 @@ class GameCommandList {
 
   /**
    * Executes the command.
-   * @param {Player} p - Player object.
    * @param {Array} args - Already parsed arguments of the command.
    * @param {Message} message - Original discord message.
    */
-  execute(p, args, message) {
+  execute(args, message) {
 
     for (var key in this.commands) {
       var cmd = args[0];
       if (key == cmd) {
         try {
-          this.commands[key](p, args, message);
+          this.commands[key](args, message);
         } catch (error) {
           logger.error('Command: ' + cmd + ' has failed. Showing error:\n' + error);
           logger.error(args);
@@ -61,4 +60,4 @@ class GameCommandList {
 
 }
 
-exports.GameCommandList = GameCommandList;
+exports.CommandList = CommandList;
