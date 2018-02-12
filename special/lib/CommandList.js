@@ -1,4 +1,4 @@
-class Volatile {
+class CommandList {
 
   constructor() {
     this.commands = {};
@@ -40,4 +40,4 @@ class Volatile {
 
 }
 
-exports.Volatile = Volatile;
+exports.CommandList = CommandList;

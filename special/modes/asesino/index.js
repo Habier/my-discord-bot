@@ -4,7 +4,7 @@ you must chose a target to attack and a target to defend from
 If the one chesen to be defended attacks you, then kill him.
 If the one attacked by you defends against you, you die.
 ***/
-var Volatile = require('../../lib/Volatile').Volatile;
+var CommandList = require('../../lib/CommandList').CommandList;
 var Gamerino = require('../../lib/Game');
 
 class GameInstance {
@@ -20,7 +20,7 @@ class GameInstance {
   addPlayer(player) {
     var p = this.game.addPlayer(player) //if no collisions are found i will get a fresh player.
     if (p) {
-      p.commands = new Volatile();
+      p.commands = new CommandList();
       this.defaultValues(p);
       this.game.send(player.username + ' se ha unido a esta guerra');
     }
