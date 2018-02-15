@@ -1,4 +1,3 @@
-let master = require('../private/master.json');
 let Asesino = require('./modes/asesino');
 
 let locked = true;
@@ -12,7 +11,7 @@ exports.comms = function(args, message) {
   } else
     switch (args[0]) {
       case "comenzar":
-        if (message.author.id != master.id)
+        if (!masters.isMaster(message.author.id))
           return; // ignoring the others
 
         locked = false;
