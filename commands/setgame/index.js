@@ -6,7 +6,7 @@ exports.exe = function(args, message) {
   if (args.length > 1)
     bot.user.setActivity(args.slice(1).join(" "));
   else
-    bot.user.setActivity("");
+    bot.user.setActivity(lang.bot_activity);
 
 }
 
