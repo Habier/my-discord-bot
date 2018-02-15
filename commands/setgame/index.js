@@ -12,7 +12,7 @@ exports.exe = function(args, message) {
 
 ///String to explain the command
 exports.man = function() {
-  return "Fotos de gatos al azar. Hanyyyaaaaaa";
+  return "(Admin) Elige a que juega el bot";
 
   //  return false;
 }
