@@ -1,6 +1,6 @@
 var Discord = require('discord.js');
 global.logger = require('winston');
-
+global.masters = require('./Services/masters');
 
 global.commandCharacter = '%'; //Set your bot especial character
 global.defaultChannelName = 'general' //Your "Server's main channel's name

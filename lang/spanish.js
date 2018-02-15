@@ -6,5 +6,6 @@ exports.lang = {
   /*Translations after this comment*/
   test: 'mensaje de prueba',
   join_welcome: 'MUHAHAHAHAHA %s, ahora tu alma nos pertenece.\nPero a cambio puedes usar mis conmandos. Escribe %s para verlos;)',
+  bot_activity: commandCharacter+'help mostrar comandos'
 
 }

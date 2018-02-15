@@ -6,6 +6,7 @@ var Commands = require('./commands');
 bot.on('ready', () => {
 	logger.info('Connected');
 	logger.info('Logged in as: ' + bot.user.username + ' - (' + bot.user.id + ')');
+	bot.user.setActivity(lang.bot_activity);
 });
 
 bot.on('message', (message) => {
