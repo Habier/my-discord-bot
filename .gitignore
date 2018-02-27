@@ -1,6 +1,5 @@
 /node_modules
 auth.json
-/special/master.json
 /private/auth.json
 /private/discordBot.db
-/private/master.json
+/private/masters.json
