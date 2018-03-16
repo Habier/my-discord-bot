@@ -1,7 +1,20 @@
-require('./_configurer');
+let conf = require('./config').conf;
+var Discord = require('discord.js');
+global.logger = require('winston');
+global.masters = require('./Services/masters');
 var auth = require('./private/auth.json');
 var special = require('./special');
 var Commands = require('./commands');
+
+// Configure logger settings
+logger.remove(logger.transports.Console);
+logger.add(logger.transports.Console, {
+	colorize: true
+});
+logger.level = 'debug';
+
+// Initialize Discord Bot
+global.bot = new Discord.Client();
 
 bot.on('ready', () => {
 	logger.info('Connected');
@@ -22,12 +35,13 @@ bot.on('message', (message) => {
 
 });
 
-bot.on('guildMemberAdd', member => {
-	// Send the message to the channel specified in _configurer.js
-	let channel = member.guild.channels.find('name', defaultChannelName);
-	if (!channel)
-		return; //channel not found, better get out
-	channel.send(lang.use(lang.join_welcome, member, commandCharacter + 'help'));
-});
+if (conf.enable_greeting)
+	bot.on('guildMemberAdd', member => {
+		// Send the message to the channel specified in _configurer.js
+		let channel = member.guild.channels.find('name', defaultChannelName);
+		if (!channel)
+			return; //channel not found, better get out
+		channel.send(lang.use(lang.join_welcome, member, commandCharacter + 'help'));
+	});
 
 bot.login(auth.token);
