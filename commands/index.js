@@ -12,7 +12,7 @@ var commandsCount = 0;
 
 glob.sync('./commands/*/index.js').forEach(function(file) {
   var commandName = file.split('/')[2]
-  logger.info('Found ' + commandCharacter + commandName);
+  logger.info('Found ' + conf.character + commandName);
   commandsCount++;
   exports.commands[commandName] = require(path.resolve(file));
 });

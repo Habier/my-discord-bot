@@ -10,7 +10,7 @@ exports.exe = function(args, message) {
     var manText = Commands.commands[key].man();
 
     if (manText) //command could be hidden
-      msg += commandCharacter + key + "\t" + Commands.commands[key].man() + "\n";
+      msg += conf.character + key + "\t" + Commands.commands[key].man() + "\n";
 
   }
   message.author.send(msg);

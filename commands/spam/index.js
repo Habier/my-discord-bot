@@ -1,6 +1,5 @@
 let Club = require('../../Services/ClubServices');
 
-
 ///String to explain the command
 exports.man = function() {
   return "Envia privados a todos los usuarios del club."

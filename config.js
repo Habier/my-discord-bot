@@ -1,8 +1,9 @@
-global.commandCharacter = '%'; //Set your bot especial character
-global.defaultChannelName = 'general' //Your "Server's main channel's name
-global.lang = require('./lang/spanish').lang;
-let conf = {};
-
+global.conf = {};
+conf.character = '%'; //Set your bot especial character
+conf.defaultChannel = 'general' //Your "Server's main channel's name
 conf.enable_greeting = false;
 
-exports.conf = conf;
+global.lang = require('./lang/spanish').lang;
+global.logger = require('winston');
+global.masters = require('./Services/masters');
+

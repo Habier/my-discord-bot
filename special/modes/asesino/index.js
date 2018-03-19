@@ -140,7 +140,7 @@ class GameInstance {
     this.game.send2All('Eres un asesino, y los demas jugadores también.\n' +
       'Debes protegerte de un jugador y atacar a otro.\n' +
       'Si te ataca de quien te defiendes, vivirás y el morirá. Lo mismo puede pasarte a ti al atacar.\n' +
-      'usa ' + commandCharacter + 'atacar NUMERO y ' + commandCharacter + 'defender NUMERO. Aquí tienes los números:\n' +
+      'usa ' + conf.character + 'atacar NUMERO y ' + conf.character + 'defender NUMERO. Aquí tienes los números:\n' +
       this.game.printablePlayerList());
 
     setTimeout(() => {
