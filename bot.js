@@ -25,7 +25,7 @@ bot.on('message', (message) => {
 	if (message.author.bot)
 		return; //lets ignore messages from bots.
 
-	if (message.content[0] ==  conf.character) {
+	if (message.content[0] == conf.character) {
 		var args = message.content.substring(1).split(' ');
 		Commands.execute(args, message);
 		special.comms(args, message);
