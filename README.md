@@ -12,5 +12,3 @@ https://github.com/JoshuaWise/better-sqlite3/wiki/Troubleshooting-installation
 
 And if it stills fails, install it with:
 > LZZ_COMPAT=1 npm install better-sqlite3
- 
-Trust me, it's worth the extra steps.
