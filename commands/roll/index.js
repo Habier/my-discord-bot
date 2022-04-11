@@ -9,7 +9,7 @@ exports.exe = function(args, message) {
     msg = roll.roll('d20').result;
   } else {
     let res = roll.roll(args[1]);
-    msg = res.result;
+    msg = res.result.toString();
   }
   message.channel.send(msg);
 

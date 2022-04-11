@@ -4,7 +4,7 @@ Everything can change drastically from one day to another.
 
 
 ## Installation
-Remember to npm install
+Remember to **npm install**  
 Inside "private" folder there are example files, delete the .example extension and fill it with your info
 
 This project uses **better-sqlite3** for some funcionalities. You better look at this ;)

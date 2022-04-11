@@ -1,5 +1,6 @@
 ///Function that makes the command functional.
-exports.exe = function(args, message) {
+exports.exe = function (args, message) {
+
   if (!masters.isMaster(message.author.id))
     return;
 
@@ -11,7 +12,7 @@ exports.exe = function(args, message) {
 }
 
 ///String to explain the command
-exports.man = function() {
+exports.man = function () {
   return "(Admin) Elige a que juega el bot";
 
   //  return false;

@@ -10,7 +10,7 @@ var path = require('path');
 exports.commands = [];
 var commandsCount = 0;
 
-glob.sync('./commands/*/index.js').forEach(function(file) {
+glob.sync('./commands/*/index.js').forEach(function (file) {
   var commandName = file.split('/')[2]
   logger.info('Found ' + conf.character + commandName);
   commandsCount++;
@@ -19,7 +19,7 @@ glob.sync('./commands/*/index.js').forEach(function(file) {
 
 logger.info('Total of commands found: ' + commandsCount);
 
-exports.execute = function(args, message) {
+exports.execute = function (args, message) {
   var cmd = args[0];
   //args = args.splice(1);
 
@@ -33,8 +33,9 @@ exports.execute = function(args, message) {
         message.channel.send('¡Oooops! ' + message.author.username + ' tu comando ha fallado.');
 
       }
-      return true; //stops the loop and tells that there was a match.
+
+      return true; // Stops the loop and tells that there was a match.
     }
   }
-  return false //indicates that there wasn't a matching command.
+  return false // There wasn't a matching command.
 }

@@ -1,25 +1,25 @@
 ///Function that makes the command functional.
-exports.exe = function(args, message) {
+exports.exe = function (args, message) {
 
-  message.channel.fetchMessages({
-      limit: 3
-    })
-    .then(function(messages) {
-      //console.log(messages)
-    let array =  messages.array();
-      for (var i in array) {
-        console.log(array[i]);
-        if (array[i].author.id == bot.user.id) {
-          array[i].delete();
+  message.channel.messages.fetch({
+    limit: 100
+  })
+    .then(function (messages) {
+      let array = [];
+      messages.each((i) => {
+        if (i.author.id == bot.user.id) {
+          array.push(i)
         }
-      }
-    }).catch(function(reason) {
+      });
+
+      message.channel.bulkDelete(array);
+    }).catch(function (reason) {
       console.log('clear: error-->' + reason);
     });
 
 }
 
 ///String to explain the command
-exports.man = function() {
-  return "Deberia borrar mensajes antiguos del bot pero no funciona :D";
+exports.man = function () {
+  return "Borra mensajes antiguos del bot si tiene ese permiso";
 }

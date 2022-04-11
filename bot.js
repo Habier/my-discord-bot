@@ -1,33 +1,29 @@
 require('./config');
-var Discord = require('discord.js');
+const { Client, Intents } = require('discord.js');
 var auth = require('./private/auth.json');
 var special = require('./special');
 var Commands = require('./commands');
 
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console, {
-	colorize: true
-});
-logger.level = 'debug';
-
 // Initialize Discord Bot
-global.bot = new Discord.Client();
+global.bot = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES"] });
 
-bot.on('ready', () => {
+bot.once('ready', () => {
 	logger.info('Connected');
 	logger.info('Logged in as: ' + bot.user.username + ' - (' + bot.user.id + ')');
 	bot.user.setActivity(lang.bot_activity);
 });
 
-bot.on('message', (message) => {
-
+bot.on('messageCreate', (message) => {
 	if (message.author.bot)
 		return; //lets ignore messages from bots.
 
 	if (message.content[0] == conf.character) {
 		var args = message.content.substring(1).split(' ');
-		Commands.execute(args, message);
+		let success = Commands.execute(args, message);
+
+		if (success)
+			message.react("👍");
+
 		special.comms(args, message);
 	}
 
