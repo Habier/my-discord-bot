@@ -16,11 +16,13 @@ exports.man = function () {
  * @returns 
  */
 exports.exe = function (args, message) {
-  if (args.length < 1) {
-
-    if (args[0] == 'all')
-
-      return;
+  if (args.length == 1) {
+    let entries = 'es';
+    readAll().forEach(function (a) {
+      entries += '\n' + a.text;
+    });
+    message.author.send(entries);
+    return true;
   }
 
   let row = {
@@ -29,6 +31,17 @@ exports.exe = function (args, message) {
     created_at: Math.floor(Date.now() / 1000),
   };
 
+  insert(row);
+
+  return true;
+}
+
+function readAll() {
+  let stmt = db.prepare("SELECT text from scribbles");
+  return stmt.all();
+}
+
+function insert(row) {
   let stmt = db.prepare("INSERT INTO scribbles (author_id, text, created_at) VALUES (?, ?, ?)");
   stmt.run(row.author_id, row.text, row.created_at);
 }
