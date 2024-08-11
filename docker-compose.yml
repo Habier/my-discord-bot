@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    network_mode: bridge
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+
+
