@@ -3,7 +3,7 @@ services:
     build: .
     network_mode: bridge
     volumes:
-      - .:/usr/app
-      - /usr/app/node_modules
+      - .:/opt/project
+      - /opt/project/node_modules
 
 

@@ -1,6 +1,13 @@
-node_modules
-npm-debug.log
 Dockerfile
-.dockerignore
+docker*.yml
+npm-debug.log
+
 .git
 .gitignore
+.config
+
+.npm
+.vscode
+node_modules
+
+README.md
