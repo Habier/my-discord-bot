@@ -1,5 +1,5 @@
 require('./config');
-const {Client, Intents, GatewayIntentBits} = require('discord.js');
+const {Client, GatewayIntentBits} = require('discord.js');
 var auth = require('./private/auth.json');
 var special = require('./special');
 var Commands = require('./commands');
@@ -17,7 +17,7 @@ bot.on('messageCreate', (message) => {
     if (message.author.bot)
         return; //lets ignore messages from bots.
 
-    if (message.content[0] == conf.character) {
+    if (message.content[0] === conf.character) {
         var args = message.content.substring(1).split(' ');
         let success = Commands.execute(args, message);
 
